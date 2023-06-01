@@ -1,4 +1,14 @@
+import { useState } from "react"
+
+interface Todo {
+   id: string
+   title: string
+   isCompleted: boolean  
+}
+
 const Todos = () => {
+   const [ todos, setTodos ] = useState<Todo[]>([])
+
    return (
       <div>
          <h1>My tasks</h1>

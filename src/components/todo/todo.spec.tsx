@@ -26,5 +26,7 @@ describe('Todos', () => {
       screen.getByDisplayValue(taskTile)
       const addButton = screen.getByLabelText('Add task')
       await userEvent.click(addButton)
+      screen.getByPlaceholderText('Insert a task name')
+      screen.getByText(taskTile)
    })
 })
