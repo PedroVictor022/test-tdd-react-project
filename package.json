@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "test": "jest --config --watch jest.config.cjs"
+    "test": "jest --config --watchAll jest.config.cjs"
   },
   "dependencies": {
     "@testing-library/dom": "^9.3.0",
