@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useForm } from "react-hook-form"
 
 interface Todo {
    id: string
@@ -7,7 +8,16 @@ interface Todo {
 }
 
 const Todos = () => {
+   const { register, handleSubmit, formState: { errors } } = useForm<{ title: string }>()
    const [ todos, setTodos ] = useState<Todo[]>([])
+
+   const handleAddClick = (data: { title: string }) => {
+      setTodos((prev) => [...prev, {
+         id: Math.floor(Math.random() * 10),
+         title: data.title, 
+         isCompleted: false
+      }])
+   }
 
    return (
       <div>
@@ -16,6 +26,8 @@ const Todos = () => {
             type="text" 
             placeholder="Insert a task name" 
             className="p-3 text-gray-300 bg-gray-900"
+            onClick={() => handleSubmit(handleAddClick)()}
+            {...register('title', { required: true })}
          />
          <button aria-label="Add task">Add task</button>
       </div>
