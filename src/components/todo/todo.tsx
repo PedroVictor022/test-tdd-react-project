@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { RxFilePlus, RxCross1 } from "react-icons/rx";
 
 interface Todo {
   id: string;
@@ -28,8 +29,8 @@ const Todos = () => {
   };
 
   const handleDelete = (id: string) => {
-   setTodos(prev => prev.filter(todo => todo.id !== id))
-  }
+    setTodos((prev) => prev.filter((todo) => todo.id !== id));
+  };
 
   return (
     <div className="p-6 bg-gray-700 rounded-xl flex flex-col items-center gap-4">
@@ -43,18 +44,22 @@ const Todos = () => {
         />
         <button
           aria-label="Add task"
-          className="p-2 bg-emerald-600 rounded-sm text-white font-medium"
+          className="text-white font-medium"
           onClick={() => handleSubmit(handleAddClick)()}
         >
-          Add task
+          <RxFilePlus size={36} />
         </button>
       </div>
       {todos.map((todo) => (
-        <div className="flex gap-3 items-center" key={todo.id}>
-          <p  className="text-gray-50">
-            {todo.title}
-          </p>
-          <button onClick={() => handleDelete(todo.id)} className="text-red-600" aria-label="x">x</button>
+        <div className="flex gap-3 items-center justify-center" key={todo.id}>
+          <p className="text-gray-50 text-2xl">{todo.title}</p>
+          <button
+            onClick={() => handleDelete(todo.id)}
+            className="text-red-600"
+            aria-label="x"
+          >
+            <RxCross1 size={24}/>
+          </button>
         </div>
       ))}
     </div>
